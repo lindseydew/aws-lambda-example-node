@@ -1,0 +1,10 @@
+{
+  "path": "/hello",
+  "httpMethod": "GET",
+  "queryStringParameters": {
+    "foo": "bar"
+  },
+  "pathParameters": {
+    "name": "developer"
+  }
+}
