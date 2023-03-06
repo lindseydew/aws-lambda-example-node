@@ -26,3 +26,12 @@ You may find these tools helpful for integrating with VSCode
 Make sure you have a `launch.json` file in `.vscode`
 Hit the run button on the run and debug tab
 
+
+### Steps for deploying
+Create a zip folder:
+- create a lambda on aws
+- zip -r function.zip .
+Upload the zip file
+- `aws lambda update-function-code --function-name lindsey-delete-me --zip-file fileb://function.zip --profile mobile`
+Configure the lambda to use the right handler
+- `aws lambda update-function-configuration --function-name lindsey-delete-me --handler app.lambdaHandler --profile mobile --region eu-west-1`
