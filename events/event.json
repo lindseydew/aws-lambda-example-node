@@ -1,10 +1,7 @@
 {
-  "path": "/hello",
+  "path": "/spikeV1",
   "httpMethod": "GET",
-  "queryStringParameters": {
-    "foo": "bar"
-  },
   "pathParameters": {
-    "name": "developer"
+    "userId": "1"
   }
 }

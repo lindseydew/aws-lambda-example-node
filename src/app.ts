@@ -15,13 +15,24 @@ import {
     APIGatewayProxyResult } 
   from "aws-lambda/trigger/api-gateway-proxy";
 import { Context } from 'aws-lambda'
+import { DatabaseV1 } from "./database/database";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
-    const name = event.pathParameters && event.pathParameters['name']
-    const foo = event.queryStringParameters && event.queryStringParameters['foo']
-    return {
-        'statusCode': 200,
-        'body': `hello ${name}, params: ${foo}`
+    const userId = event.pathParameters && event.pathParameters['userId']
+    const dynamodbClient = new DynamoDBClient({ endpoint: 'http://docker.for.mac.localhost:8000', region: 'local'});
+    const db = new DatabaseV1("ExampleOne", dynamodbClient)
+    if(userId) {
+        const result = await db.getByUserId(userId)
+        return {
+            'statusCode': 200,
+            'body': `${JSON.stringify(result)}`
+        }
     }
-    
+    else {
+        return {
+            'statusCode': 400,
+            'body': 'missing paramater userId'
+        }
+    }    
 };
