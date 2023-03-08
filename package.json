@@ -15,7 +15,8 @@
     "test": "mocha tests/unit/",
     "compile": "tsc",
     "db:create": "tsc && node build/database/create.js",
-    "db:query": "tsc && node build/database/query.js"
+    "db:query": "tsc && node build/database/query.js",
+    "db:run": "tsc && node build/database/index.js"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.111",
