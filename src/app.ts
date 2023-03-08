@@ -20,7 +20,7 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
     const userId = event.pathParameters && event.pathParameters['userId']
-    const dynamodbClient = new DynamoDBClient({ endpoint: 'http://docker.for.mac.localhost:8000', region: 'local'});
+    const dynamodbClient = new DynamoDBClient({ endpoint: 'http://172.16.123.1:8000/', region: 'local'});
     const db = new DatabaseV1("ExampleOne", dynamodbClient)
     if(userId) {
         const result = await db.getByUserId(userId)

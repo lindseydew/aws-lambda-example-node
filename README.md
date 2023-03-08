@@ -35,3 +35,11 @@ Upload the zip file
 - `aws lambda update-function-code --function-name lindsey-delete-me --zip-file fileb://function.zip --profile mobile`
 Configure the lambda to use the right handler
 - `aws lambda update-function-configuration --function-name lindsey-delete-me --handler app.lambdaHandler --profile mobile --region eu-west-1`
+
+Download dynamo locally:
+https://dev.to/ajinkabeer/run-a-dynamodb-instance-locally-with-node-js-without-an-aws-account-58k6
+
+docker run -p 8000:8000 -v $(pwd)/local/dynamodb:/data/ amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -dbPath /data
+
+add 
+`sudo ifconfig lo0 alias 172.16.123.1`
